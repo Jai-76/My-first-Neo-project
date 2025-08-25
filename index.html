@@ -9,6 +9,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <style>
         * {
             margin: 0;
@@ -136,12 +137,14 @@
             overflow: hidden;
             text-decoration: none;
         }
+
         .btn-grp {
             display: flex;
             justify-content: space-between;
             gap: 10px;
             width: 100%;
         }
+
         .login-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
@@ -733,10 +736,108 @@
             transform: translateY(-5px) scale(1.1);
             color: #ffd700;
         }
+/* Default Light Mode */
+body {
+  background-color: #ffffff;
+  color: #000000;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* Toggle Button Styling */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #0078ff;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background-color: #005fcc;
+}
+    /* -------- Default Light Mode -------- */
+    body {
+      background-color: #ffffff;
+      color: #000000;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background-color: #0078ff;
+      color: #fff;
+    }
+
+    /* Blue links stay blue always */
+    a {
+      color: #0078ff;
+      text-decoration: none;
+    }
+
+    /* -------- Dark Mode Styles -------- */
+    body.dark-mode {
+      background-color: #121212;
+      color: #ffffff;
+    }
+
+    body.dark-mode header {
+      background-color: #1e1e1e;
+    }
+
+    body.dark-mode a {
+      color: #00aaff;
+    }
+
+    /* -------- Theme Toggle Button -------- */
+    #theme-toggle {
+      background-color: #ffffff;
+      color: #0078ff;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    #theme-toggle:hover {
+      background-color: #005fcc;
+      color: #fff;
+    }
+
+    body.dark-mode #theme-toggle {
+      background-color: #1e1e1e;
+      color: #ffffff;
+      border: 1px solid #555;
+    }
+
+    body.dark-mode #theme-toggle:hover {
+      background-color: #333333;
+    }
     </style>
 </head>
 
 <body>
+    <!-- Toggle Button -->
+    <button id="theme-toggle" class="theme-toggle">🌙 Dark Mode</button>
     <div class="login-container" id="loginContainer">
         <div class="logo">
             <i class="fas fa-car-side"></i>
@@ -1311,6 +1412,29 @@
             // toggle the eye slash icon
             this.classList.toggle('fa-eye-slash');
         });
+document.addEventListener("DOMContentLoaded", () => {
+      const toggleBtn = document.getElementById("theme-toggle");
+      const body = document.body;
+
+      // Load saved theme from localStorage
+      if (localStorage.getItem("theme") === "dark") {
+        body.classList.add("dark-mode");
+        toggleBtn.textContent = "☀️ Light Mode";
+      }
+
+      // Toggle theme on button click
+      toggleBtn.addEventListener("click", () => {
+        body.classList.toggle("dark-mode");
+
+        if (body.classList.contains("dark-mode")) {
+          toggleBtn.textContent = "☀️ Light Mode";
+          localStorage.setItem("theme", "dark");
+        } else {
+          toggleBtn.textContent = "🌙 Dark Mode";
+          localStorage.setItem("theme", "light");
+        }
+      });
+    });
     </script>
     <footer>
         <div class="footer-content">
