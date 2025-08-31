@@ -64,7 +64,7 @@ Project maintainers will follow these Community Impact Guidelines when determini
 **1. Correction**
 
 - ***Community Impact:*** Use of inappropriate language or other behavior deemed unprofessional or unwelcome.
-- ***Consequence:***A private, written warning from maintainers, providing clarity around the nature of the violation and an explanation of why the behavior was inappropriate. A public apology may be requested.
+- ***Consequence:*** A private, written warning from maintainers, providing clarity around the nature of the violation and an explanation of why the behavior was inappropriate. A public apology may be requested.
 
 **2. Warning**
 
@@ -102,6 +102,6 @@ Enforcement guidelines inspired by [Mozilla’s code of conduct enforcement ladd
 
 ---
 
-Thank you for being a part of My-first-Neo-project. By participating in this community, you are not just contributing code; you are helping create a welcoming entry point for new developers. Let's build it together, respectfully and collaboratively.
+*Thank you for being a part of My-first-Neo-project. By participating in this community, you are not just contributing code; you are helping create a welcoming entry point for new developers. Let's build it together, respectfully and collaboratively.*
 
 **We thank you for helping us make My-first-Neo-project a welcoming and inspiring community for all.**
