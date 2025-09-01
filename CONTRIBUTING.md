@@ -30,7 +30,7 @@ This guide will walk you through the entire contribution process, from setting u
 
 ## 📜 Code of Conduct
 
-We expect all contributors to follow our `Coming Soon` .
+We expect all contributors to follow our [`Code of Conduct`](https://github.com/Jai-76/My-first-Neo-project/blob/main/CODE_OF_CONDUCT.md .
 
 By participating in this project, you agree to maintain a **respectful and inclusive environment** for everyone.
 
@@ -38,7 +38,7 @@ By participating in this project, you agree to maintain a **respectful and inclu
 
 ## 📜 License
 
-By contributing to this project, you agree that your contributions will be licensed under the [MIT License](https://github.com/Jai-76/My-first-Neo-project/blob/main/License).
+By contributing to this project, you agree that your contributions will be licensed under the [`MIT License`](https://github.com/Jai-76/My-first-Neo-project/blob/main/License).
 
 ![Line](https://user-images.githubusercontent.com/85225156/171937799-8fc9e255-9889-4642-9c92-6df85fb86e82.gif)
 
@@ -121,7 +121,7 @@ We aim to keep things smooth and transparent:
 
 ![Line](https://user-images.githubusercontent.com/85225156/171937799-8fc9e255-9889-4642-9c92-6df85fb86e82.gif)
 
-## 🏅Attribution
+## 🏅 Attribution
 
 This **CONTRIBUTING.md** was prepared with **❤️** by **Divya Jain** for **My-first-Neo-project** as part of the **GSSoC'25 program.**
 
@@ -129,10 +129,10 @@ The structure and recommendations follow **GitHub Open Source Guides** and best 
 
 ![Line](https://user-images.githubusercontent.com/85225156/171937799-8fc9e255-9889-4642-9c92-6df85fb86e82.gif)
 
-## 👍Thank you for your contribution!!
+## 👍 Thank you for your contribution!!
 
-<h4 align="center">
+<h3 align="center">
 Thank you for contributing to My-first-Neo-project🌟
  <br>
 We can't wait to see what you build! 🍽️✨
-</h4>
+</h3>
