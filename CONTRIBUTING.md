@@ -30,7 +30,7 @@ This guide will walk you through the entire contribution process, from setting u
 
 ## 📜 Code of Conduct
 
-We expect all contributors to follow our [`Code of Conduct`](https://github.com/Jai-76/My-first-Neo-project/blob/main/CODE_OF_CONDUCT.md .
+We expect all contributors to follow our [`Code of Conduct`](https://github.com/Jai-76/My-first-Neo-project/blob/main/CODE_OF_CONDUCT.md).
 
 By participating in this project, you agree to maintain a **respectful and inclusive environment** for everyone.
 
