@@ -478,6 +478,119 @@
         color: rgb(255, 252, 252);
         font-size: 14px;
       }
+      .wrapper-container{
+        width: 100%;
+        background-color: rgb(255, 255, 255);
+        height: 80vh;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap :100px;
+        padding: 40px;
+      }
+      .wrapper-container .left{
+        width: 30%;
+        height: 50vh;
+      }
+      .wrapper-container .left img{
+        width: 100%;
+        border-radius: 40px;
+        object-fit: cover;
+      }
+      .wrapper-container .right{
+        width: 40%;
+        height: 30vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+       .wrapper-container .right p{
+        font-size: 18px;
+        font-weight: 200;
+        margin-top: 20px;
+       }
+        .wrapper-container .right a{
+          margin-top: 10px;
+          color:#000;
+        }
+        .parent{
+          width: 100%;
+          height: 100vh;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+                    margin-top: 100px;
+        }
+        .bottom{
+          display: grid;
+          grid-template-rows: 1;
+          grid-template-columns: 4fr 4fr 4fr;
+          padding: 20px 100px;
+          gap: 30px;
+
+        }
+        .parent .top{
+            text-align: center;
+        }
+        .bottom .left{
+          height: 80vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+        }
+        .bottom .left img{
+        width: 100%;
+        height: 70%;
+        }
+        .bottom .left h1{
+          font-weight: 400;
+          font-size: 30px;
+        }
+        .bottom .left p{
+          font-family: 200;
+          margin-bottom: 20px;
+          color: grey;
+        }
+
+        .bottom .mid{
+          height: 80vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+        }
+        .bottom .mid img{
+        width: 100%;
+        height: 70%;
+        }
+        .bottom .mid h1{
+          font-weight: 400;
+          font-size: 30px;
+        }
+        .bottom .mid p{
+          font-family: 200;
+          margin-bottom: 20px;
+          color: grey;
+        }
+
+         .bottom .right{
+          height: 80vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+        }
+        .bottom .right img{
+        width: 100%;
+        height: 70%;
+        }
+        .bottom .right h1{
+          font-weight: 400;
+          font-size: 30px;
+        }
+        .bottom .right p{
+          font-family: 200;
+          margin-bottom: 20px;
+          color: grey;
+        }
     </style>
   </head>
   <body>
@@ -572,6 +685,42 @@
           </div>
         </div>
       </section>
+      
+      <!--Ride with friends section-->
+      <div class="wrapper-container">
+        <div class="left">
+          <img src="./images/generated-image-ai_1756711650441.jpg" alt="">
+        </div>
+        <div class="right">
+          <h1>Ride with friends <br>seamlessly</h1>
+          <p>Riding with friends just got easier: set up a group ride in the <br>Neo app, invite your friends, and arrive at your destination.<br> Friends who ride together save together.</p>
+          <a href="#">Learn More</a>
+        </div>
+      </div>
+
+      <!--Ride Options section-->
+      <div class="parent">
+        <div class="top">
+          <h1>Use the Neo app to help you travel your way</h1></div>
+        <div class="bottom">
+          <div class="left">
+            <img src="./images/cabs.jpg" alt="cab">
+            <h1>Ride options</h1>
+            <p>There’s more than one way to move with Neo, no matter where you are or where you’re headed next.</p>
+          </div>
+          <div class="mid">
+            <img src="./images/airplane.jpg" alt="airport">
+            <h1>700+ airports</h1>
+            <p>You can request a ride to and from most major airports. Schedule a ride to the airport for one less thing to worry about.</p>
+          </div>
+          <div class="right">
+              <img src="./images/city.jpg" alt="city">
+            <h1>15,000+ cities</h1>
+            <p>The app is available in thousands of cities worldwide, so you can request a ride even when you’re far from home.</p>
+          </div>
+        </div>
+      </div>
+
 
       <!-- Rating -->
       <section class="rating-section">
