@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NeoRide - Adventure Begins</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      position: relative;
+    }
+
+    /* Animated starfield background */
+    .stars {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .star {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      animation: twinkle 3s infinite ease-in-out;
+    }
+
+    .star.small {
+      width: 1px;
+      height: 1px;
+      animation-duration: 2s;
+    }
+
+    .star.medium {
+      width: 2px;
+      height: 2px;
+      animation-duration: 3s;
+      box-shadow: 0 0 4px #fff;
+    }
+
+    .star.large {
+      width: 3px;
+      height: 3px;
+      animation-duration: 4s;
+      box-shadow: 0 0 6px #00f7ff, 0 0 12px #00f7ff;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    /* Shooting stars effect */
+    .shooting-stars {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+    }
+
+    .shooting-star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #00f7ff;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #00f7ff;
+      animation: shoot 8s linear infinite;
+    }
+
+    @keyframes shoot {
+      0% {
+        transform: translateX(-100px) translateY(-100px);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(calc(100vw + 100px)) translateY(calc(100vh + 100px));
+        opacity: 0;
+      }
+    }
+
+    .container {
+      text-align: center;
+      z-index: 10;
+      position: relative;
+    }
+
+    /* Typewriter effect */
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      letter-spacing: 2px;
+      color: #00f7ff;
+      text-shadow: 0 0 20px #00f7ff, 0 0 40px #00f7ff, 0 0 60px #00f7ff;
+      border-right: 3px solid #00f7ff;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 3s steps(20, end) forwards, blink 0.7s infinite;
+      margin-bottom: 1.5rem;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 15ch } /* "Welcome to NeoRide" length */
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+
+    /* Cool subtext */
+    p {
+      font-size: 1.3rem;
+      color: #e0f7fa;
+      animation: fadeIn 4s ease-in-out forwards;
+      opacity: 0;
+      text-shadow: 0 0 10px rgba(224, 247, 250, 0.5);
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* Loading bar */
+    .loader {
+      margin: 2rem auto 0;
+      width: 200px;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid rgba(0, 247, 255, 0.3);
+    }
+
+    .loader::before {
+      content: "";
+      position: absolute;
+      left: -50%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, #00f7ff, transparent);
+      animation: load 2s infinite;
+      box-shadow: 0 0 20px #00f7ff;
+    }
+
+    @keyframes load {
+      0% { left: -50%; }
+      100% { left: 100%; }
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+        width: 15ch;
+      }
+      p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background stars -->
+  <div class="stars" id="stars"></div>
+  <div class="shooting-stars" id="shooting-stars"></div>
+
+  <div class="container">
+    <h1>Welcome to NeoRide</h1>
+    <p>🚀 Buckle up... Your journey begins shortly</p>
+    <div class="loader"></div>
+  </div>
+
+  <script>
+    function createStars() {
+      const starsContainer = document.getElementById('stars');
+      const numStars = 200;
+
+      for (let i = 0; i < numStars; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        
+        // Random size
+        const sizes = ['small', 'medium', 'large'];
+        const weights = [0.7, 0.25, 0.05];
+        let randomSize = sizes[0];
+        const rand = Math.random();
+        if (rand < weights[2]) randomSize = sizes[2];
+        else if (rand < weights[1] + weights[2]) randomSize = sizes[1];
+        
+        star.classList.add(randomSize);
+        
+        // Random position
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        
+        // Random animation delay
+        star.style.animationDelay = Math.random() * 3 + 's';
+        
+        starsContainer.appendChild(star);
+      }
+    }
+
+    function createShootingStars() {
+      const shootingContainer = document.getElementById('shooting-stars');
+      
+      function addShootingStar() {
+        const shootingStar = document.createElement('div');
+        shootingStar.className = 'shooting-star';
+        
+        shootingStar.style.left = Math.random() * 100 + 'px';
+        shootingStar.style.top = Math.random() * 100 + 'px';
+        shootingStar.style.animationDelay = Math.random() * 8 + 's';
+        
+        shootingContainer.appendChild(shootingStar);
+        
+        setTimeout(() => {
+          if (shootingStar.parentNode) {
+            shootingStar.parentNode.removeChild(shootingStar);
+          }
+        }, 8000);
+      }
+
+      setInterval(addShootingStar, 3000);
+      addShootingStar();
+    }
+
+    // Initialize effects
+    createStars();
+    createShootingStars();
+
+    // Auto redirect after 6 seconds
+    setTimeout(() => {
+      window.location.href = "index.html"; 
+    }, 5000);
+  </script>
+
+</body>
+</html>
