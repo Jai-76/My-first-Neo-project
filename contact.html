@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="NeoRide.jpeg">
+  <title>Contact NeoRide</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .container {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 900px;
+      margin: 40px auto;
+      overflow: hidden;
+      animation: fadeIn 0.7s ease-out;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 25px;
+      text-align: center;
+      font-size: 1.8em;
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .main-content {
+      padding: 40px;
+    }
+
+    h1, h2 {
+      color: #333;
+      font-weight: 600;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    p {
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto 30px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 15px;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      font-size: 1em;
+      transition: all 0.3s ease;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #667eea;
+      box-shadow: 0 0 8px rgba(102, 126, 234, 0.4);
+      outline: none;
+      transform: scale(1.02);
+    }
+
+    .contact-form textarea {
+      resize: none;
+      min-height: 120px;
+    }
+
+    .contact-form button {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+      background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+    }
+
+    .contact-form button:active {
+      transform: scale(0.97);
+    }
+
+    /* Success Message */
+    #successMessage {
+      display: none;
+      text-align: center;
+      color: #28a745;
+      font-weight: 600;
+      margin-top: 10px;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    /* Contact Details */
+    .contact-details {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .contact-details h2 {
+      margin-bottom: 15px;
+      color: #444;
+    }
+
+    .contact-item {
+      margin: 10px 0;
+      font-size: 1.1em;
+      color: #333;
+    }
+
+    .contact-item i {
+      margin-right: 10px;
+      color: #667eea;
+    }
+
+    footer {
+      background: linear-gradient(135deg, #3b56d0 0%, #630eb7 100%);
+      color: white;
+      text-align: center;
+      padding: 20px 15px;
+      border-radius: 0 0 20px 20px;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-content p {
+      color: white;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .footer-links a {
+      color: white;
+      font-size: 1.3em;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      transform: scale(1.2);
+      color: #ffd700;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <i class="fas fa-envelope"></i> Contact NeoRide
+    </header>
+    <div class="main-content">
+      <h1>Get in Touch</h1>
+      <p>Have questions, feedback, or suggestions? We'd love to hear from you!</p>
+
+      <form class="contact-form" id="contactForm">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+      <p id="successMessage">✅ Thank you! Your message has been sent successfully.</p>
+
+      <div class="contact-details">
+        <h2>Contact Details</h2>
+        <div class="contact-item"><i class="fas fa-map-marker-alt"></i> 123 NeoRide Street, Tech City, India</div>
+        <div class="contact-item"><i class="fas fa-phone-alt"></i> +91 98765 43210</div>
+        <div class="contact-item"><i class="fas fa-envelope"></i> support@neoride.com</div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <p>&copy; 2025 NeoRide - Your Safety First</p>
+        <div class="footer-links">
+          <a href="index.html" title="Home"><i class="fas fa-home"></i></a>
+          <a href="aboutus.html" title="About Us"><i class="fas fa-info-circle"></i></a>
+          <a href="contact.html" title="Contact"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const successMessage = document.getElementById("successMessage");
+      successMessage.style.display = "block";
+      this.reset();
+      setTimeout(() => {
+        successMessage.style.display = "none";
+      }, 4000);
+    });
+  </script>
+
+</body>
+</html>
