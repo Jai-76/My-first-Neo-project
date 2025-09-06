@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sign Up</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <!-- Google Identity library (kept) -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
 
   <style>
     * {
@@ -23,7 +25,7 @@
       background: white;
       padding: 2rem;
       border-radius: 12px;
-     width: 100%;
+      width: 100%;
       max-width: 400px;
       box-shadow: 0 8px 150px rgba(0,0,0,0.15);
       border: 1px solid #ccc;
@@ -67,11 +69,12 @@
       padding: 10px;
       border: none;
       border-radius: 6px;
-      
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
       font-weight: bold;
       cursor: pointer;
+      margin-top: 10px;
+      text-align: center;
     }
     .btn:disabled {
       background-color: #999;
@@ -98,77 +101,68 @@
       color: black;
       text-decoration: none;
     }
-    .social-buttons {
-      display: flex;
-      gap: 10px;
-      margin-top: 1rem;
-    }
-    .social-btn {
-      flex: 1;
-      padding: 8px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
+    .logo {
       text-align: center;
-      cursor: pointer;
-      font-size: 0.85rem;
+      margin-bottom: 20px;
     }
-     .logo {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .logo i {
-            font-size: 3em;
-            color: #667eea;
-            animation: rotate 2s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
+    .logo i {
+      font-size: 3em;
+      color: #667eea;
+      animation: rotate 2s linear infinite;
+    }
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="signupContainer" id="signupContainer">
-        <div class="logo">
-            <i class="fas fa-car-side"></i>
-        </div>
-        <h2>NeoRide</h2>
+      <div class="logo">
+        <i class="fas fa-car-side"></i>
+      </div>
+      <h2>NeoRide</h2>
   
-    <form id="signup-form">
+      <form id="signup-form">
         <div class="form-group">
-        <label>Name</label>
-        <input type="text" id="name" required />
-        <div id="name" class="name"></div>
-      </div>
+          <label>Name</label>
+          <input type="text" id="name" required />
+          <div id="name" class="name"></div>
+        </div>
 
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" id="email" required />
-        <div id="emailFeedback" class="inline-feedback"></div>
-      </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="email" required />
+          <div id="emailFeedback" class="inline-feedback"></div>
+        </div>
 
-      <div class="form-group">
-        <label>Password</label>
-        <input type="password" id="password" required />
-        <span class="toggle-password" onclick="togglePassword('password')">👁️</span>
-      </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="password" required />
+          <span class="toggle-password" onclick="togglePassword('password')">👁️</span>
+        </div>
 
-      <div class="form-group">
-        <label>Confirm Password</label>
-        <input type="password" id="confirm-password" required />
-        <span class="toggle-password" onclick="togglePassword('confirm-password')">👁️</span>
-        <div id="matchFeedback" class="inline-feedback"></div>
-      </div>
+        <div class="form-group">
+          <label>Confirm Password</label>
+          <input type="password" id="confirm-password" required />
+          <span class="toggle-password" onclick="togglePassword('confirm-password')">👁️</span>
+          <div id="matchFeedback" class="inline-feedback"></div>
+        </div>
 
-      <button type="submit" class="btn">Sign Up</button>
-      <div class="spinner" id="spinner"></div>
+        <!-- Normal Signup -->
+        <button type="submit" class="btn">Sign Up</button>
+        <div class="spinner" id="spinner"></div>
 
-      <div class="login-page">
-        <p>Already have an account? <a href="neocode.html">Login</a></p>
-      </div>
+        <!-- Google Sign-In Button -->
+        <div id="customGoogleBtn" class="btn">Continue with Google</div>
+
+        <div class="login-page">
+          <p>Already have an account? <a href="neocode.html">Login</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <script>
     function togglePassword(id) {
@@ -209,21 +203,111 @@
         alert("Passwords do not match.");
         return;
       }
-     localStorage.setItem("email", email.value);
-     localStorage.setItem("password", password.value);
-  
+
+      localStorage.setItem("email", email.value);
+      localStorage.setItem("password", password.value);
 
       spinner.style.display = "block";
 
       setTimeout(() => {
         spinner.style.display = "none";
         alert("Account created successfully!");
-        form.reset();
+        window.location.href = "index.html"; // redirect
       }, 1500);
-   
-
-
     });
+
+    /***************
+     Google OAuth2 token flow -> get userinfo -> store userProfile -> redirect
+     ***************/
+    // Replace this with your actual client id (must end with .apps.googleusercontent.com)
+    const GOOGLE_CLIENT_ID = "YOUR_GOOGLE_CLIENT_ID";
+
+    let googleTokenClient = null;
+
+    // Initialize token client once the library is available
+    function initGoogleTokenClient() {
+      if (!window.google || !google.accounts || !google.accounts.oauth2) {
+        console.error("Google library not available yet.");
+        return;
+      }
+
+      googleTokenClient = google.accounts.oauth2.initTokenClient({
+        client_id: GOOGLE_CLIENT_ID,
+        scope: "openid profile email",
+        // The callback receives the token response (access_token or an error)
+        callback: async (tokenResponse) => {
+          if (tokenResponse.error) {
+            console.error("Token response error:", tokenResponse);
+            alert("Google sign-in failed: " + tokenResponse.error);
+            return;
+          }
+
+          console.log("Token response:", tokenResponse);
+
+          // Use the access token to fetch user info from OpenID userinfo endpoint
+          try {
+            const res = await fetch("https://openidconnect.googleapis.com/v1/userinfo", {
+              headers: {
+                Authorization: "Bearer " + tokenResponse.access_token
+              }
+            });
+            if (!res.ok) {
+              const text = await res.text();
+              console.error("Failed to fetch userinfo:", res.status, text);
+              alert("Failed to fetch Google profile info.");
+              return;
+            }
+            const profile = await res.json();
+            console.log("Google profile:", profile);
+
+            // Save the profile in localStorage for booking.html to read
+            const userProfile = {
+              name: profile.name || profile.given_name || "",
+              email: profile.email || "",
+              picture: profile.picture || ""
+            };
+            localStorage.setItem("userProfile", JSON.stringify(userProfile));
+
+            // Redirect to booking.html (or index.html) after successful sign-in
+            // Use booking.html as you requested
+            window.location.href = "booking.html";
+          } catch (err) {
+            console.error("Error fetching userinfo:", err);
+            alert("Error during Google sign-in. Check console for details.");
+          }
+        }
+      });
+
+      // Add click listener to your custom button to request token (opens popup)
+      const customBtn = document.getElementById("customGoogleBtn");
+      if (customBtn) {
+        customBtn.addEventListener("click", () => {
+          if (!googleTokenClient) {
+            console.error("googleTokenClient not initialized.");
+            alert("Google sign-in not initialized yet. Try reloading the page.");
+            return;
+          }
+          // requestAccessToken opens the popup. 'prompt' can be 'consent' to force account chooser.
+          googleTokenClient.requestAccessToken({ prompt: "consent" });
+        });
+      }
+    }
+
+    // Wait until google script loads; try to initialize periodically (safe)
+    (function waitForGoogle() {
+      if (window.google && google.accounts && google.accounts.oauth2) {
+        initGoogleTokenClient();
+      } else {
+        // try again shortly
+        setTimeout(waitForGoogle, 250);
+      }
+    })();
+
+    // Helpful debug instructions (show in console)
+    console.log("Debug: signup.html loaded. Make sure to:");
+    console.log("1) Replace GOOGLE_CLIENT_ID with your actual client id in the script.");
+    console.log("2) Add your page origin (e.g., http://127.0.0.1:5500) to Google Cloud Console -> OAuth 2.0 Client ID -> Authorized JavaScript origins.");
+    console.log("3) Use DevTools Network & Console to inspect errors if sign-in fails.");
   </script>
 </body>
 </html>
