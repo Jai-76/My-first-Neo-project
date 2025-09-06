@@ -606,10 +606,9 @@
         <a href="#">Contact</a>
         <a href="#">About Us</a>
       </div>
-      <div class="authentication">
-        <a class="login " href="#">Login</a>
-        <a class="signup" href="#">Sign Up</a>
-      </div>
+     <div class="authentication" id="authSection">
+  <!-- Will be replaced by JS if user is logged in -->
+</div>
     </nav>
 
     <div class="main-container">
@@ -854,6 +853,28 @@
       // Activate autocomplete for both inputs
       setupAutocomplete("pickup", "pickup-suggestions");
       setupAutocomplete("destination", "destination-suggestions");
+
+      // Show logged-in Google user info if available
+document.addEventListener("DOMContentLoaded", () => {
+  const userData = localStorage.getItem("userProfile");
+  if (userData) {
+    const user = JSON.parse(userData);
+    const authSection = document.getElementById("authSection");
+    authSection.innerHTML = `
+      <div style="display:flex;align-items:center;gap:10px;">
+        <img src="${user.picture}" alt="Profile" style="width:35px;height:35px;border-radius:50%;">
+        <span>${user.name}</span>
+      </div>
+    `;
+  } else {
+    const authSection = document.getElementById("authSection");
+    authSection.innerHTML = `
+      <a class="login" href="login.html">Login</a>
+      <a class="signup" href="signup.html">Sign Up</a>
+    `;
+  }
+});
+
     </script>
   </body>
 </html>
