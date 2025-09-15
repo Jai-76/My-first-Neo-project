@@ -3,78 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    /* Scroll to Top Button Styles */
-    .scroll-to-top {
-      position: fixed;
-      bottom: 100px;
-      right: 20px;
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5em;
-      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-      transition: all 0.3s ease;
-      z-index: 1000;
-      animation: pulse 2s infinite;
-    }
-
-    .scroll-to-top:hover {
-      transform: scale(1.1) translateY(-3px);
-      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-      background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
-    }
-
-    .scroll-to-top:active {
-      transform: scale(0.95);
-    }
-
-    .scroll-to-top.show {
-      display: flex;
-      animation: slideInFromRight 0.5s ease-out;
-    }
-
-    @keyframes slideInFromRight {
-      from {
-        opacity: 0;
-        transform: translateX(100px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    @keyframes pulse {
-      0%, 100% {
-        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-      }
-      50% {
-        box-shadow: 0 5px 20px rgba(102, 126, 234, 0.5);
-      }
-    }
-
-    /* Responsive adjustments for scroll to top button */
-    @media (max-width: 768px) {
-      .scroll-to-top {
-        bottom: 120px;
-        right: 15px;
-        width: 50px;
-        height: 50px;
-        font-size: 1.2em;
-      }
-    }
-
-    /* Footer inside container */
-    footer {ial-scale=1.0">
-  <link rel="icon" href="NeoRide.jpeg">
+<link rel="icon" href="NeoRide.jpeg">
   <title>About NeoRide</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -208,7 +137,9 @@
       align-items: center;
       gap: 8px;
     }
-
+    .footer-content p{
+      color: white;
+    }
     .footer-links {
       display: flex;
       gap: 20px;
