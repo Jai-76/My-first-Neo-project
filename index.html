@@ -32,7 +32,7 @@
             background: white;
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 8px 20px rgba(20, 19, 19, 0.788);
             width: 100%;
             max-width: 400px;
             transform: translateY(0);
@@ -54,7 +54,7 @@
 
         .login-container:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.477);
         }
 
         .login-container h2 {
@@ -94,18 +94,21 @@
         .input-group input {
             width: 100%;
             padding: 15px 20px 15px 50px;
-            border: 2px solid #e1e1e1;
-            border-radius: 12px;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            background: #f8f9fa;
+            border: 2px solid #d1c4e9;
+            border-radius: 14px;
+            font-size: 17px;
+            transition: all 0.3s cubic-bezier(.4,0,.2,1);
+            background: linear-gradient(135deg, #f3e8ff 0%, #e0e7ff 100%);
+            color: #2a0932;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.07);
         }
 
         .input-group input:focus {
             outline: none;
-            border-color: #667eea;
-            background: white;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #764ba2;
+            background: linear-gradient(135deg, #fff 0%, #e9d8fd 100%);
+            box-shadow: 0 0 0 4px rgba(118, 75, 162, 0.12);
+            color: #2a0932;
         }
 
         .input-group i {
@@ -113,43 +116,49 @@
             left: 18px;
             top: 50%;
             transform: translateY(-50%);
-            color: #999;
-            transition: color 0.3s ease;
+            color: #a78bfa;
+            font-size: 1.1em;
+            transition: color 0.3s cubic-bezier(.4,0,.2,1);
         }
 
         .input-group input:focus+i {
-            color: #667eea;
+            color: #764ba2;
         }
 
         .login-btn {
             flex: 1;
             width: 100%;
             padding: 15px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #764ba2 0%, #48bb78 100%);
+            color: #fff;
             border: none;
-            border-radius: 12px;
+            border-radius: 14px;
             cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            transition: all 0.3s cubic-bezier(.4,0,.2,1);
             position: relative;
             overflow: hidden;
             text-decoration: none;
+            box-shadow: 0 4px 16px rgba(118, 75, 162, 0.10);
         }
         .btn-grp {
             display: flex;
             justify-content: space-between;
-            gap: 10px;
+            gap: 12px;
             width: 100%;
         }
         .login-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+            background: linear-gradient(135deg, #48bb78 0%, #764ba2 100%);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 12px 28px rgba(72, 187, 120, 0.18);
+            color: #ffffff;
         }
 
         .login-btn:active {
-            transform: translateY(0);
+            transform: translateY(0) scale(0.98);
+            background: linear-gradient(135deg, #764ba2 0%, #48bb78 100%);
         }
 
         #mainInterface {
@@ -569,7 +578,7 @@
             color: white;
             border: none;
             border-radius: 50%;
-            cursor: pointer;
+            cursor:pointer;
             display: flex !important;
             align-items: center;
             justify-content: center;
@@ -653,7 +662,7 @@
 
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 10px;
             color: #666;
             background: #f8f9fa;
             border-radius: 0 0 20px 20px;
@@ -788,10 +797,16 @@
             background: linear-gradient(135deg, #3b56d0 0%, #630eb7 100%);
             color: white;
             text-align: center;
-            padding: 20px 10px;
+            padding: 12px 5px 8px 5px;
             border-radius: 0 0 20px 20px;
             box-shadow: 0 -5px 15px rgba(102, 126, 234, 0.2);
             z-index: 999;
+            font-size: 1.02em;
+            letter-spacing: 0.2px;
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         footer::before {
@@ -801,51 +816,117 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
             animation: shine 6s infinite;
+            z-index: 0;
         }
 
         .footer-content {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
-            gap: 10px;
+            gap: 18px;
+            width: 100%;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-content p {
+            margin: 0;
+            font-weight: 500;
+            font-size: 1.08em;
+            letter-spacing: 0.5px;
         }
 
         .footer-links {
             display: flex;
-            gap: 15px;
+            gap: 18px;
         }
 
         .footer-links a {
             color: white;
-            font-size: 1.2em;
-            transition: all 0.3s ease;
+            font-size: 1.30em;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(.4,0,.2,1);
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.10);
+            text-decoration: none;
         }
 
         .footer-links a:hover {
-            transform: translateY(-5px) scale(1.1);
+            transform: translateY(-5px) scale(1.13) rotate(-6deg);
             color: #ffd700;
+            background: rgba(255,255,255,0.18);
+            box-shadow: 0 6px 18px rgba(255, 215, 0, 0.13);
+        }
+
+        @media (max-width: 600px) {
+            footer {
+            font-size: 0.98em;
+            padding: 10px 2px 6px 2px;
+            }
+            .footer-content {
+            flex-direction: column;
+            gap: 7px;
+            }
+            .footer-links {
+            gap: 12px;
+            }
+            .footer-links a {
+            width: 32px;
+            height: 32px;
+            font-size: 1.1em;
+            }
         }
     </style>
 </head>
 
 <body>
     <!-- Header section -->
-    <div style="width: 100%; padding: 40px; text-align: center; color: white; margin-bottom: 30px;">
-        <h1>🚗 Welcome to NeoRide</h1>
-        <p>Your Safe Journey Starts Here</p>
-        <div style="height: 200px; background: rgba(255,255,255,0.1); border-radius: 15px; margin: 20px 0; display: flex; align-items: center; justify-content: center;">
-            <p style="font-size: 1.2em;">Experience safe and reliable ride booking</p>
+    <div style="width: 100%; padding: 50px 20px 40px 20px; text-align: center; color: #fff; margin-bottom: 36px; background: linear-gradient(120deg, #667eea 0%, #764ba2 100%); border-radius: 24px; box-shadow: 0 10px 32px rgba(102,126,234,0.18), 0 2px 8px rgba(118,75,162,0.08); position: relative; overflow: hidden;">
+        <div style="position: absolute; top: -40px; left: -40px; width: 120px; height: 120px; background: radial-gradient(circle, #fff3 60%, transparent 100%); border-radius: 50%; z-index: 0;"></div>
+        <div style="position: absolute; bottom: -30px; right: -30px; width: 90px; height: 90px; background: radial-gradient(circle, #fff2 60%, transparent 100%); border-radius: 50%; z-index: 0;"></div>
+        <h1 style="font-size: 2.7rem; margin-bottom: 10px; letter-spacing: 1.5px; font-weight: 700; z-index: 1; position: relative;">
+            <span style="font-size: 2.2rem; vertical-align: middle; margin-right: 8px;">🚗</span>
+            Welcome to <span style="color:#30113e; font-weight: bold; text-shadow: 0 2px 8px #2a093273;">NeoRide</span>
+        </h1>
+        <h5 style="font-weight: 400; opacity: 0.98; margin-bottom: 18px; font-size: 1.25rem; z-index: 1; position: relative; letter-spacing: 0.5px;">
+            <i class="fas fa-shield-alt" style="color:#ffd700; margin-right: 6px;"></i>
+            Your Safe Journey Starts Here
+        </h5>
+        <div style="height: 180px; background: rgba(255,255,255,0.13); border-radius: 22px; margin: 28px auto 0 auto; max-width: 600px; display: flex; align-items: center; justify-content: center; box-shadow: 0px 8px 24px rgba(0,0,0,0.18); position: relative; z-index: 1;">
+            <p style="font-size: 1.45rem; font-weight: 500; padding: 18px 24px; color: #2a0932; text-shadow: 0 1px 8px #fff8;">
+                <span style="background: linear-gradient(#38105b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700;">Experience</span>
+                safe, reliable, and smart ride booking with <span style="color:#27064a; font-weight: 600;font-style:italic;">NeoRide</span>.
+            </p>
+        </div>
+        <div style="margin-top: 22px; display: flex; justify-content: center; gap: 18px; z-index: 1; position: relative;">
+            <span style="background: rgba(255,255,255,0.13); border-radius: 12px; padding: 8px 18px; font-size: 1.05rem; font-weight: 500; color: #f0f0f0; display: flex; align-items: center; gap: 7px;">
+                <i class="fas fa-map-marker-alt"></i> Real-time Tracking
+            </span>
+            <span style="background: rgba(255,255,255,0.13); border-radius: 12px; padding: 8px 18px; font-size: 1.05rem; font-weight: 500; color: #ffffff; display: flex; align-items: center; gap: 7px;">
+                <i class="fas fa-user-shield"></i> Verified Drivers
+            </span>
+            <span style="background: rgba(255,255,255,0.13); border-radius: 12px; padding: 8px 18px; font-size: 1.05rem; font-weight: 500; color: #ffffff; display: flex; align-items: center; gap: 7px;">
+                <i class="fas fa-exclamation-triangle"></i> Emergency SOS
+            </span>
         </div>
     </div>
 
+    <p style="font-style: italic;padding-bottom: 5px;color:white">Login to enjoy the ride!</p>
     <div class="login-container" id="loginContainer">
-        <div class="logo">
+        <div class="logo" style="font-size: 1rem; color: #2f374a; margin-bottom: 10px;">
             <i class="fas fa-car-side"></i>
         </div>
-        <h2>NeoRide</h2>
-        <div class="input-group">
+        <h2  style="margin-bottom: 20px; font-weight: 600;">NeoRide</h2>
+
+        <div class="input-group"  style="position: relative; margin: 15px 0;">
             <input type="text" id="username" placeholder="Username" required>
             <i class="fas fa-user"></i>
         </div>
