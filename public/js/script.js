@@ -419,6 +419,8 @@ if (scrollToTopBtn) {
         e.preventDefault();
         console.log('Button clicked via event listener');
         scrollToTop();
+
+        
     });
 
     // Show/hide button based on scroll position
@@ -474,10 +476,7 @@ function scrollToTop() {
         console.log('Visual feedback applied');
     }
     
-    // Force immediate scroll first (to ensure it works)
-    document.documentElement.scrollTop = 0; // Chrome, Firefox, IE, Opera
-    document.body.scrollTop = 0; // Safari
-    window.scrollTo(0, 0); // Fallback
+
     
     console.log('Immediate scroll executed');
     console.log('New scroll position after immediate:', window.pageYOffset);
