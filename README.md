@@ -2,7 +2,7 @@
 
 NeoRide is a modern, frontend-only ride booking platform designed for safe and convenient transportation experiences. This GitHub repository contains a complete single-page web application that allows users to book rides, view their scheduled rides, rate drivers, and read driver reviews — all without any backend or server dependency.
 
-## Features
+### Features
 
 - Book rides by entering pickup and dropoff locations, date, and time.
 - View a list of all your upcoming rides.
