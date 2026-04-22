@@ -461,51 +461,27 @@ if (scrollToTopBtn) {
 
 // Smooth scroll to top function - Enhanced for desktop
 function scrollToTop() {
-    console.log('=== SCROLL FUNCTION CALLED ===');
-    console.log('Current scroll position (window.pageYOffset):', window.pageYOffset);
-    console.log('Current scroll position (documentElement.scrollTop):', document.documentElement.scrollTop);
-    console.log('Current scroll position (body.scrollTop):', document.body.scrollTop);
-    
-    // Add visual feedback
     const btn = document.getElementById('scrollToTopBtn');
     if (btn) {
+        // Add the animation class
         btn.classList.add('clicked');
-        setTimeout(() => btn.classList.remove('clicked'), 300);
-        console.log('Visual feedback applied');
+        document.body.classList.add('scrolling-up');
+        
+        // Use smooth scroll
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+
+        // Remove the classes after animation completes and reset position
+        setTimeout(() => {
+            btn.classList.remove('clicked');
+            document.body.classList.remove('scrolling-up');
+            // Reset visibility/opacity
+            btn.style.opacity = '0.7';
+            btn.style.transform = 'scale(0.8)';
+        }, 1200);
     }
-    
-    // Force immediate scroll first (to ensure it works)
-    document.documentElement.scrollTop = 0; // Chrome, Firefox, IE, Opera
-    document.body.scrollTop = 0; // Safari
-    window.scrollTo(0, 0); // Fallback
-    
-    console.log('Immediate scroll executed');
-    console.log('New scroll position after immediate:', window.pageYOffset);
-    
-    // Then add smooth animation
-    setTimeout(() => {
-        try {
-            window.scrollTo({
-                top: 0,
-                left: 0,
-                behavior: 'smooth'
-            });
-            console.log('Smooth scroll also attempted');
-        } catch (e) {
-            console.log('Smooth scroll failed:', e);
-        }
-    }, 50);
-    
-    // Additional check after a delay
-    setTimeout(() => {
-        console.log('Final position check:', window.pageYOffset);
-        if (window.pageYOffset > 0) {
-            console.log('Scroll did not work, forcing again...');
-            document.documentElement.scrollTop = 0;
-            document.body.scrollTop = 0;
-            window.scrollTo(0, 0);
-        }
-    }, 500);
 }
 
 // Alternative scroll function for testing

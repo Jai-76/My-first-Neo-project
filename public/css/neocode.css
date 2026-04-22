@@ -14,18 +14,6 @@ body {
   padding: 20px;
 }
 
-* {
-  box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
-}
-body {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 20px;
-}
 .container {
   background: white;
   padding: 2rem;
@@ -42,14 +30,17 @@ h2 {
   text-align: center;
   margin-bottom: 1rem;
 }
+
 .form-group {
   margin-bottom: 1rem;
   position: relative;
 }
+
 label {
   display: block;
   margin-bottom: 5px;
 }
+
 input[type="email"],
 input[type="password"],
 input[type="text"] {
@@ -59,6 +50,7 @@ input[type="text"] {
   border: 1px solid #ccc;
   border-radius: 6px;
 }
+
 .toggle-password {
   position: absolute;
   right: 10px;
@@ -66,11 +58,13 @@ input[type="text"] {
   cursor: pointer;
   color: #555;
 }
+
 .inline-feedback {
   font-size: 0.85rem;
   color: red;
   margin-top: 5px;
 }
+
 .checkbox-group {
   display: flex;
   align-items: center;
@@ -78,6 +72,7 @@ input[type="text"] {
   font-size: 0.9rem;
   margin-bottom: 1rem;
 }
+
 .forgot-password {
   display: block;
   text-align: center;
@@ -87,6 +82,7 @@ input[type="text"] {
   color: black;
   text-decoration: none;
 }
+
 .signup-page {
   display: block;
   text-align: center;
@@ -95,6 +91,7 @@ input[type="text"] {
   color: black;
   text-decoration: none;
 }
+
 .btn {
   width: 100%;
   padding: 10px;
@@ -102,13 +99,22 @@ input[type="text"] {
   border-radius: 6px;
 
   color: white;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #6a85f1, #8b5cf6, #6d28d9);
   font-weight: bold;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
+
+.btn:hover {
+  background: linear-gradient(135deg, #6a85f1, #8b5cf6, #6d28d9);
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
 .btn:disabled {
   background-color: #999;
 }
+
 .spinner {
   display: none;
   width: 24px;
@@ -120,16 +126,19 @@ input[type="text"] {
   animation: spin 1s linear infinite;
   margin-top: 1rem;
 }
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
   }
 }
+
 .social-buttons {
   display: flex;
   gap: 10px;
   margin-top: 1rem;
 }
+
 .social-btn {
   flex: 1;
   padding: 8px;
@@ -142,6 +151,7 @@ input[type="text"] {
   cursor: pointer;
   font-size: 0.85rem;
 }
+
 .logo {
   text-align: center;
   margin-bottom: 20px;
@@ -157,6 +167,7 @@ input[type="text"] {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -178,6 +189,7 @@ input[type="text"] {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -202,12 +214,10 @@ header::before {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent);
   animation: shine 3s infinite;
 }
 
@@ -215,6 +225,7 @@ header::before {
   0% {
     left: -100%;
   }
+
   100% {
     left: 100%;
   }
@@ -237,10 +248,12 @@ header::before {
 }
 
 @keyframes pulse {
+
   0%,
   100% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.05);
   }
@@ -258,6 +271,7 @@ header::before {
 }
 
 @keyframes bounce {
+
   0%,
   20%,
   50%,
@@ -265,9 +279,11 @@ header::before {
   100% {
     transform: translateY(0);
   }
+
   40% {
     transform: translateY(-10px);
   }
+
   60% {
     transform: translateY(-5px);
   }
@@ -300,10 +316,12 @@ header::before {
 }
 
 @keyframes mapPulse {
+
   0%,
   100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.5;
   }
@@ -378,13 +396,16 @@ header::before {
 }
 
 @keyframes shake {
+
   0%,
   100% {
     transform: translateX(0);
   }
+
   25% {
     transform: translateX(-5px);
   }
+
   75% {
     transform: translateX(5px);
   }
@@ -406,6 +427,7 @@ header::before {
     max-height: 0;
     padding: 0 25px;
   }
+
   to {
     opacity: 1;
     max-height: 500px;
@@ -507,6 +529,7 @@ header::before {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -527,6 +550,7 @@ header::before {
     opacity: 0;
     transform: scale(0.7);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
